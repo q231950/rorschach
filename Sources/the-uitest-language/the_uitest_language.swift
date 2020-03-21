@@ -1,22 +1,4 @@
-import XCTest
-
-struct the_uitest_language {
-
-    func x() {
-        test {
-            Given {
-                ILearnABitMore()
-                IBuildARocket()
-            }
-            When {
-                ILaunchARocket()
-            }
-            Then {
-                ICanSeeTheStars()
-            }
-        }
-    }
-}
+import Foundation
 
 func test(@TestBuilder _ content: () -> (Given, When, Then)) {
     content().0.steps.forEach { $0.execute() }

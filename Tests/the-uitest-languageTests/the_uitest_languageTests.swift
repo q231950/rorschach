@@ -3,7 +3,7 @@ import XCTest
 
 final class the_uitest_languageTests: XCTestCase {
 
-    func test_abc() {
+    func test_iCanSeeTheStars() {
         test {
             Given {
                 ILearnABitMore()
@@ -20,6 +20,6 @@ final class the_uitest_languageTests: XCTestCase {
 
 
     static var allTests = [
-        ("test_abc", test_abc),
+        ("test_iCanSeeTheStars", test_iCanSeeTheStars),
     ]
 }
