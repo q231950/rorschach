@@ -1,10 +1,16 @@
 import XCTest
-@testable import the_uitest_language
+import Rorschach
 
-final class the_uitest_languageTests: XCTestCase {
+final class RorschachTests: XCTestCase {
 
+    /// An Example test case.
+    ///
+    /// This test `expect`s a certain behaviour.
+    ///
+    /// `Given` certain preconditions `When` some event occurs `Then` some behaviour should be observed.
+    ///
     func test_iCanSeeTheStars() {
-        test {
+        expect {
             Given {
                 ILearnABitMore()
                 IBuildARocket()
@@ -17,7 +23,6 @@ final class the_uitest_languageTests: XCTestCase {
             }
         }
     }
-
 
     static var allTests = [
         ("test_iCanSeeTheStars", test_iCanSeeTheStars),

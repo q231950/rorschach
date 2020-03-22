@@ -1,10 +1,10 @@
-# bdd-uitests
+# Rorschach Tests
 
-This package allows you to write tests in a BDD style. It's Swift's function builders that allow a tiny dsl that makes your tests way more readable.
+This package allows you to write tests in a BDD style. It's Swift's function builders that allow for a lightweight DSL that makes your tests way more readable.
 
 ```swift
 func test_iCanSeeTheStars() {
-        test {
+        expect {
             Given {
                 ILearnABitMore()
                 IBuildARocket()
