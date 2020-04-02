@@ -7,6 +7,15 @@
 
 import Foundation
 
-public struct Then {
-    let assertion: Assertion
+public struct Then<C> {
+
+    let assertion: Assertion<C>
+
+    public init(@ThenBuilder<C> _ content: () -> Assertion<C>) {
+        assertion = content()
+    }
+
+    func assert(in context: C) {
+        assertion.assert(in: context)
+    }
 }

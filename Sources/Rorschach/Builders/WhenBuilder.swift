@@ -7,15 +7,9 @@
 
 import Foundation
 
-@_functionBuilder public struct WhenBuilder {
+@_functionBuilder public struct WhenBuilder<C> {
 
-    public static func buildBlock(_ steps: Step...) -> [Step] {
+    public static func buildBlock(_ steps: Step<C>...) -> [Step<C>] {
         steps
-    }
-}
-
-public extension When {
-    init(@WhenBuilder _ content: () -> Step) {
-        step = content()
     }
 }

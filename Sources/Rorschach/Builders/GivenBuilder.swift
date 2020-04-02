@@ -7,21 +7,10 @@
 
 import Foundation
 
-@_functionBuilder public struct GivenBuilder {
+@_functionBuilder public struct GivenBuilder<C> {
 
-    public static func buildBlock(_ steps: Step...) -> [Step] {
+    public static func buildBlock(_ steps: Step<C>...) -> [Step<C>] {
         steps
     }
 }
 
-/// Adds initializers for `Given` which accept a `GivenBuilder`.
-public extension Given {
-
-    init(@GivenBuilder _ content: () -> [Step]) {
-        self.init(steps: content())
-    }
-
-    init(@GivenBuilder _ content: () -> Step) {
-        self.init(steps: [content()])
-    }
-}

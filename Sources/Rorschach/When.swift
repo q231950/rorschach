@@ -7,7 +7,16 @@
 
 import Foundation
 
-public struct When {
-    let step: Step
+public struct When<C> {
+
+    let step: Step<C>
+
+    public init(@WhenBuilder<C> _ content: () -> Step<C>) {
+        step = content()
+    }
+
+    func execute(in context: C) {
+        step.execute(in: context)
+    }
 }
 

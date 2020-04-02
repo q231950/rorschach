@@ -8,31 +8,40 @@
 import Foundation
 import Rorschach
 
+public class UniverseContext {
+    var numberOfStars: Int = 0
+}
+
 // MARK: Steps
 
-struct ILearnABitMore: Step {
-    func execute() {
+class ILearnABitMore: Step<UniverseContext> {
+
+    override func execute(in context: UniverseContext) {
         print("I am learning...")
     }
 }
 
-struct IBuildARocket: Step {
-    func execute() {
-        print("I am building a rocket...")
+class IBuildARocket: Step<UniverseContext> {
+
+    override func execute(in context: UniverseContext) {
+        context.numberOfStars = 7
+        print("I am building a rocket that flies far enough to see 7 stars...")
     }
 }
 
-struct ILaunchARocket: Step {
-    func execute() {
+class ILaunchARocket: Step<UniverseContext> {
+
+    override func execute(in context: UniverseContext) {
         print("I launch a rocket")
     }
 }
 
 // MARK: Assertions
 
-struct ICanSeeTheStars: Assertion {
-    func assert() {
-        print("I can see the stars!")
+class ICanSeeTheStars: Assertion<UniverseContext> {
+
+    override func assert(in context: UniverseContext) {
+        print("I can see \(context.numberOfStars) stars!")
     }
 }
 

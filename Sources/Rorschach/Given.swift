@@ -7,6 +7,23 @@
 
 import Foundation
 
-public struct Given {
-    let steps: [Step]
+public class Given<C> {
+
+    let steps: [Step<C>]
+
+    init(steps: [Step<C>]) {
+        self.steps = steps
+    }
+
+    public convenience init(@GivenBuilder<C> _ content: () -> [Step<C>]) {
+        self.init(steps: content())
+    }
+
+    public convenience init(@GivenBuilder<C> _ content: () -> Step<C>) {
+        self.init(steps: [content()])
+    }
+
+    func execute(in context: C) {
+        steps.forEach { $0.execute(in: context) }
+    }
 }

@@ -7,6 +7,9 @@
 
 import Foundation
 
-public protocol Assertion {
-    func assert()
+open class Assertion<C> {
+
+    public init() {}
+
+    open func assert(in context: C) {}
 }

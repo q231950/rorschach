@@ -7,6 +7,9 @@
 
 import Foundation
 
-public protocol Step {
-    func execute()
+open class Step<C> {
+
+    public init() {}
+
+    open func execute(in context: C) {}
 }
