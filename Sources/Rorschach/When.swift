@@ -15,8 +15,8 @@ public struct When<C> {
         step = content()
     }
 
-    func execute(in context: C) {
-        step.execute(in: context)
+    func execute(in context: inout C) {
+        step.execute(in: &context)
     }
 }
 

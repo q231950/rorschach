@@ -23,7 +23,7 @@ public class Given<C> {
         self.init(steps: [content()])
     }
 
-    func execute(in context: C) {
-        steps.forEach { $0.execute(in: context) }
+    func execute(in context: inout C) {
+        steps.forEach { $0.execute(in: &context) }
     }
 }

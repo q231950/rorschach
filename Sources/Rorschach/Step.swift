@@ -11,5 +11,5 @@ open class Step<C> {
 
     public init() {}
 
-    open func execute(in context: C) {}
+    open func execute(in context: inout C) {}
 }
