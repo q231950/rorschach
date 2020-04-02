@@ -16,14 +16,14 @@ public class UniverseContext {
 
 class ILearnABitMore: Step<UniverseContext> {
 
-    override func execute(in context: UniverseContext) {
+    override func execute(in context: inout UniverseContext) {
         print("I am learning...")
     }
 }
 
 class IBuildARocket: Step<UniverseContext> {
 
-    override func execute(in context: UniverseContext) {
+    override func execute(in context: inout UniverseContext) {
         context.numberOfStars = 7
         print("I am building a rocket that flies far enough to see 7 stars...")
     }
@@ -31,7 +31,7 @@ class IBuildARocket: Step<UniverseContext> {
 
 class ILaunchARocket: Step<UniverseContext> {
 
-    override func execute(in context: UniverseContext) {
+    override func execute(in context: inout UniverseContext) {
         print("I launch a rocket")
     }
 }

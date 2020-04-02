@@ -4,19 +4,19 @@ This package allows you to write tests in a BDD style. It's Swift's function bui
 
 ```swift
 func test_iCanSeeTheStars() {
-        let context = UniverseContext()
+    var context = UniverseContext()
 
-        expect(in: context) {
-            Given {
-                ILearnABitMore()
-                IBuildARocket()
-            }
-            When {
-                ILaunchARocket()
-            }
-            Then {
-                ICanSeeTheStars()
-            }
+    expect(in: &context) {
+        Given {
+            ILearnABitMore()
+            IBuildARocket()
+        }
+        When {
+            ILaunchARocket()
+        }
+        Then {
+            ICanSeeTheStars()
         }
     }
+}
 ```

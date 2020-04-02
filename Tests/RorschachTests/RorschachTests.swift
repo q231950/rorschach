@@ -10,9 +10,9 @@ final class RorschachTests: XCTestCase {
     /// `Given` certain preconditions `When` some event occurs `Then` some behaviour should be observed.
     ///
     func test_iCanSeeTheStars() {
-        let context = UniverseContext()
+        var context = UniverseContext()
 
-        expect(in: context) {
+        expect(in: &context) {
             Given {
                 ILearnABitMore()
                 IBuildARocket()
@@ -27,9 +27,9 @@ final class RorschachTests: XCTestCase {
     }
 
     func test_iCanLaunchMyRocket() {
-        let context = UniverseContext()
+        var context = UniverseContext()
 
-        expect(in: context) {
+        expect(in: &context) {
             When {
                 ILaunchARocket()
             }
