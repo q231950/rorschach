@@ -11,5 +11,9 @@ open class Assertion<C> {
 
     public init() {}
 
+    open var title: String {
+        "\(type(of: self))"
+    }
+
     open func assert(in context: C) {}
 }

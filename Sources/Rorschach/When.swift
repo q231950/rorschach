@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XCTest
 
 public struct When<C> {
 
@@ -16,7 +17,9 @@ public struct When<C> {
     }
 
     func execute(in context: inout C) {
-        step.execute(in: &context)
+        XCTContext.runActivity(named: step.title) { activity in
+            step.execute(in: &context)
+        }
     }
 }
 

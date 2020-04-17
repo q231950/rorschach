@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XCTest
 
 public struct Then<C> {
 
@@ -16,6 +17,8 @@ public struct Then<C> {
     }
 
     func assert(in context: C) {
-        assertion.assert(in: context)
+        XCTContext.runActivity(named: assertion.title) { _ in
+            assertion.assert(in: context)
+        }
     }
 }

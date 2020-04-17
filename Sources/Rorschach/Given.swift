@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XCTest
 
 public class Given<C> {
 
@@ -24,6 +25,10 @@ public class Given<C> {
     }
 
     func execute(in context: inout C) {
-        steps.forEach { $0.execute(in: &context) }
+        steps.forEach { step in
+            XCTContext.runActivity(named: step.title ) { _ in
+                step.execute(in: &context)
+            }
+        }
     }
 }

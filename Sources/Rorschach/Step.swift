@@ -11,5 +11,9 @@ open class Step<C> {
 
     public init() {}
 
+    open var title: String {
+        "\(type(of: self))"
+    }
+
     open func execute(in context: inout C) {}
 }
