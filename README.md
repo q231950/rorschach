@@ -23,4 +23,4 @@ func test_iCanSeeTheStars() {
 
 ---
 
-<img width=600 src="Resources/test-output.png" alt="Example Output in the Report navigator"> 
+<img width=800 src="Resources/test-output.png" alt="Example Output in the Report navigator"> 

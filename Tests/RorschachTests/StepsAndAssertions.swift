@@ -16,12 +16,20 @@ public class UniverseContext {
 
 class ILearnABitMore: Step<UniverseContext> {
 
+    override var title: String {
+        "I learn a bit more"
+    }
+
     override func execute(in context: inout UniverseContext) {
         print("I am learning...")
     }
 }
 
 class IBuildARocket: Step<UniverseContext> {
+
+    override var title: String {
+        "I build a rocket"
+    }
 
     override func execute(in context: inout UniverseContext) {
         context.numberOfStars = 7
@@ -31,6 +39,10 @@ class IBuildARocket: Step<UniverseContext> {
 
 class ILaunchARocket: Step<UniverseContext> {
 
+    override var title: String {
+        "I launch a rocket"
+    }
+
     override func execute(in context: inout UniverseContext) {
         print("I launch a rocket")
     }
@@ -39,6 +51,10 @@ class ILaunchARocket: Step<UniverseContext> {
 // MARK: Assertions
 
 class ICanSeeTheStars: Assertion<UniverseContext> {
+
+    override var title: String {
+        "I assert that I can see the stars"
+    }
 
     override func assert(in context: UniverseContext) {
         print("I can see \(context.numberOfStars) stars!")
