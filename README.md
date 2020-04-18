@@ -1,4 +1,5 @@
-# Rorschach Tests
+<img width=800 src="Resources/rorschach.png" alt="The Rorschach Logo"> 
+
 
 This package allows you to write tests in a BDD style. It's Swift's function builders that allow for a lightweight DSL that makes your tests way more readable.
 
