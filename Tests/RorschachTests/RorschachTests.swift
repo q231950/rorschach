@@ -26,21 +26,7 @@ final class RorschachTests: XCTestCase {
         }
     }
 
-    func test_iCanLaunchMyRocket() {
-        var context = UniverseContext()
-
-        expect(in: &context) {
-            When {
-                ILaunchARocket()
-            }
-            Then {
-                ICanSeeTheStars()
-            }
-        }
-    }
-
     static var allTests = [
         ("test_iCanSeeTheStars", test_iCanSeeTheStars),
-        ("test_iCanLaunchMyRocket", test_iCanLaunchMyRocket),
     ]
 }

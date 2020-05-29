@@ -7,9 +7,9 @@
 
 import Foundation
 
-@_functionBuilder public struct WhenBuilder<C> {
+@_functionBuilder public struct WhenBuilder<C, S: Step> where C == S.Context {
 
-    public static func buildBlock(_ steps: Step<C>...) -> [Step<C>] {
+    public static func buildBlock(_ steps: S) -> S {
         steps
     }
 }

@@ -7,13 +7,21 @@
 
 import Foundation
 
-open class Step<C> {
+public struct EmptyStep<C>: Step {
+    public typealias Context = C
 
-    public init() {}
-
-    open var title: String {
-        "\(type(of: self))"
+    public var title: String {
+        "emptyness"
     }
 
-    open func execute(in context: inout C) {}
+    public func execute(in context: inout Context) {}
+}
+
+public protocol Step {
+
+    associatedtype Context
+
+    var title: String {get}
+
+    func execute(in context: inout Context)
 }

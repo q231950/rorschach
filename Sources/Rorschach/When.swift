@@ -8,11 +8,11 @@
 import Foundation
 import XCTest
 
-public struct When<C> {
+public class When<C, S: Step> where C == S.Context  {
 
-    let step: Step<C>
+    let step: S
 
-    public init(@WhenBuilder<C> _ content: () -> Step<C>) {
+    public init(@WhenBuilder<C, S> _ content: () -> S) {
         step = content()
     }
 

@@ -8,27 +8,25 @@
 import Foundation
 import XCTest
 
-public class Given<C> {
+public class Given<C, S1: Step, S2: Step> where C == S1.Context, C == S2.Context {
 
-    let steps: [Step<C>]
+    let steps: (S1, S2)
 
-    init(steps: [Step<C>]) {
+    init(steps: (S1, S2)) {
         self.steps = steps
     }
 
-    public convenience init(@GivenBuilder<C> _ content: () -> [Step<C>]) {
+    public convenience init(@GivenBuilder<C> _ content: () -> ((S1, S2))) {
         self.init(steps: content())
     }
 
-    public convenience init(@GivenBuilder<C> _ content: () -> Step<C>) {
-        self.init(steps: [content()])
-    }
-
     func execute(in context: inout C) {
-        steps.forEach { step in
-            XCTContext.runActivity(named: step.title ) { _ in
-                step.execute(in: &context)
-            }
+        XCTContext.runActivity(named: steps.0.title ) { _ in
+            steps.0.execute(in: &context)
+        }
+
+        XCTContext.runActivity(named: steps.1.title ) { _ in
+            steps.1.execute(in: &context)
         }
     }
 }

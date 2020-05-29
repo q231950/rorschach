@@ -14,36 +14,36 @@ public class UniverseContext {
 
 // MARK: Steps
 
-class ILearnABitMore: Step<UniverseContext> {
+class ILearnABitMore: Step {
 
-    override var title: String {
+    var title: String {
         "I learn a bit more"
     }
 
-    override func execute(in context: inout UniverseContext) {
+    func execute(in context: inout UniverseContext) {
         print("I am learning...")
     }
 }
 
-class IBuildARocket: Step<UniverseContext> {
+struct IBuildARocket: Step {
 
-    override var title: String {
+    var title: String {
         "I build a rocket"
     }
 
-    override func execute(in context: inout UniverseContext) {
+    func execute(in context: inout UniverseContext) {
         context.numberOfStars = 7
         print("I am building a rocket that flies far enough to see 7 stars...")
     }
 }
 
-class ILaunchARocket: Step<UniverseContext> {
+class ILaunchARocket: Step {
 
-    override var title: String {
+    var title: String {
         "I launch a rocket"
     }
 
-    override func execute(in context: inout UniverseContext) {
+    func execute(in context: inout UniverseContext) {
         print("I launch a rocket")
     }
 }
