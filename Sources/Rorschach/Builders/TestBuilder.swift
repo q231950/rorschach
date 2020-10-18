@@ -9,11 +9,11 @@ import Foundation
 
 @_functionBuilder public struct TestBuilder<C> {
 
-    static public func buildBlock(_ given: Given<C>, _ when: When<C>, _ then: Then<C>) -> (Given<C>, When<C>, Then<C>) {
+    public static func buildBlock(_ given: Given<C>, _ when: When<C>, _ then: Then<C>) -> (Given<C>, When<C>, Then<C>) {
         return (given, when, then)
     }
 
-    static public func buildBlock(_ when: When<C>, _ then: Then<C>) -> (When<C>, Then<C>) {
+    public static func buildBlock(_ when: When<C>, _ then: Then<C>) -> (When<C>, Then<C>) {
         return (when, then)
     }
 }
