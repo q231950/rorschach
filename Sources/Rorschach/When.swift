@@ -10,15 +10,17 @@ import XCTest
 
 public struct When<C> {
 
-    let step: Step<C>
+    let steps: [Step<C>]
 
-    public init(@WhenBuilder<C> _ content: () -> Step<C>) {
-        step = content()
+    public init(@WhenBuilder<C> _ content: () -> [Step<C>]) {
+        steps = content()
     }
 
     func execute(in context: inout C) {
-        XCTContext.runActivity(named: step.title) { activity in
-            step.execute(in: &context)
+        steps.forEach { step in
+            XCTContext.runActivity(named: step.title ) { _ in
+                step.execute(in: &context)
+            }
         }
     }
 }
