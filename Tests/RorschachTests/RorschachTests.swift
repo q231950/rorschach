@@ -13,15 +13,19 @@ final class RorschachTests: XCTestCase {
     ///
     func test_withGeneralSteps_andAssertions() {
 
+        var x = 9
+
         expect(in: &context) {
             Given<UniverseContext> { context in
                 context.numberOfStars = 7
+                x = 4
             }
-            When {
-                ILaunchARocket()
+            When<UniverseContext> { context in
+                x = 5
             }
             Then<UniverseContext> { context in
                 XCTAssertEqual(context.numberOfStars, 7)
+                XCTAssertEqual(x, 5)
             }
         }
     }
