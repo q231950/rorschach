@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder public struct TestBuilder<C> {
+@resultBuilder public struct TestBuilder<C> {
 
     public static func buildBlock(_ given: Given<C>, _ when: When<C>, _ then: Then<C>) -> (Given<C>, When<C>, Then<C>) {
         return (given, when, then)

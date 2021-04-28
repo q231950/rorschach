@@ -8,7 +8,7 @@
 import Foundation
 
 
-@_functionBuilder public struct ThenBuilder<C> {
+@resultBuilder public struct ThenBuilder<C> {
     public static func buildBlock(_ assertion: Assertion<C>) -> Assertion<C> {
         assertion
     }
