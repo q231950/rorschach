@@ -16,6 +16,10 @@ public class Given<C> {
         self.steps = steps
     }
 
+    public init(_ content: @escaping (inout C) -> Void) {
+        steps = [GeneralStep(content)]
+    }
+
     public convenience init(@GivenBuilder<C> _ content: () -> [Step<C>]) {
         self.init(steps: content())
     }
@@ -30,5 +34,17 @@ public class Given<C> {
                 step.execute(in: &context)
             }
         }
+    }
+}
+
+public class GeneralStep<C>: Step<C> {
+    let content: (_ inContext: inout C) -> Void
+
+    public init(_ content: @escaping (_ context: inout C) -> Void) {
+        self.content = content
+    }
+
+    override public func execute(in context: inout C) {
+        content(&context)
     }
 }
