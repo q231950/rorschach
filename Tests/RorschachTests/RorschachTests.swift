@@ -13,7 +13,7 @@ final class RorschachTests: XCTestCase {
     ///
     /// `Given` certain preconditions `When` some event occurs `Then` some behaviour should be observed.
     ///
-    func test_unitTest_example() {
+    func test_simple_example() {
 
         let context = UniverseContext()
 
@@ -30,7 +30,7 @@ final class RorschachTests: XCTestCase {
         }
     }
 
-    func test_unitTest_example_short() {
+    func test_simple_example_short() {
 
         let context = UniverseContext()
 
@@ -44,7 +44,7 @@ final class RorschachTests: XCTestCase {
         }
     }
 
-    func test_uiTest_example() {
+    func test_complex_example() {
 
         struct Universe {
             var numberOfStars = 0
@@ -81,9 +81,9 @@ final class RorschachTests: XCTestCase {
         }
     }
 
-//    static var allTests = [
-//        ("test_withGeneralSteps_andAssertions", test_unitTest_example),
-//        ("test_iCanSeeTheStars", test_iCanSeeTheStars),
-//        ("test_iCanLaunchMyRocket", test_iCanLaunchMyRocket),
-//    ]
+    static var allTests = [
+        ("test_simple_example", test_simple_example),
+        ("test_simple_example_short", test_simple_example_short),
+        ("test_complex_example", test_complex_example),
+    ]
 }
