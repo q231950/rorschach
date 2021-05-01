@@ -8,28 +8,28 @@
 import Foundation
 import XCTest
 
-public func expect<C>(in context: inout C, @TestBuilder<C> _ content: () -> (given: Given<C>, when: When<C>, then: Then<C>)) {
+public func expect(@TestBuilder _ content: () -> (given: Given, when: When, then: Then)) {
 
-    XCTContext.runActivity(named: "Given" ) { _ in
-        content().given.execute(in: &context)
+    XCTContext.runActivity(named: content().given.title ) { _ in
+        content().given.execute()
     }
 
-    XCTContext.runActivity(named: "When" ) { _ in
-        content().when.execute(in: &context)
+    XCTContext.runActivity(named: content().when.title ) { _ in
+        content().when.execute()
     }
 
-    XCTContext.runActivity(named: "Then" ) { _ in
-        content().then.assert(in: context)
+    XCTContext.runActivity(named: content().then.title ) { _ in
+        content().then.assert()
     }
 }
 
-public func expect<C>(in context: inout C, @TestBuilder<C> _ content: () -> (when: When<C>, then: Then<C>)) {
+public func expect(@TestBuilder _ content: () -> (when: When, then: Then)) {
 
-    XCTContext.runActivity(named: "When" ) { _ in
-        content().when.execute(in: &context)
+    XCTContext.runActivity(named: content().when.title ) { _ in
+        content().when.execute()
     }
 
-    XCTContext.runActivity(named: "Then" ) { _ in
-        content().then.assert(in: context)
+    XCTContext.runActivity(named: content().then.title ) { _ in
+        content().then.assert()
     }
 }

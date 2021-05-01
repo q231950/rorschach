@@ -8,17 +8,28 @@
 import Foundation
 import XCTest
 
-public struct Then<C> {
+public struct Then {
 
-    let assertion: Assertion<C>
+    let assertion: Assertion
+    /// Returns _"Given"_ or _"Given I do this"_ when this _Given_ has a single step named _"I do this"_
+    var title: String {
+        if let title = _title {
+            return "Then " + title
+        }
+        return "Then"
+    }
+    var _title: String?
 
-    public init(@ThenBuilder<C> _ content: () -> Assertion<C>) {
+    public init(_ title: String, content: @escaping () -> Void) {
+        _title = title
+        assertion = Assertion(content: content)
+    }
+
+    public init(@ThenBuilder _ content: () -> Assertion) {
         assertion = content()
     }
 
-    func assert(in context: C) {
-        XCTContext.runActivity(named: assertion.title) { _ in
-            assertion.assert(in: context)
-        }
+    func assert() {
+        assertion.assert()
     }
 }

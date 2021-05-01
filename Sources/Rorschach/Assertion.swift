@@ -6,14 +6,25 @@
 //
 
 import Foundation
+import XCTest
 
-open class Assertion<C> {
+open class Assertion {
 
-    public init() {}
+    let title: String?
+    let content: () -> Void
 
-    open var title: String {
-        "\(type(of: self))"
+    public init(_ title: String? = nil, content: @escaping () -> Void) {
+        self.title = title
+        self.content = content
     }
 
-    open func assert(in context: C) {}
+    public func assert() {
+        if let title = title {
+            XCTContext.runActivity(named: title ) { _ in
+                content()
+            }
+        } else {
+            content()
+        }
+    }
 }

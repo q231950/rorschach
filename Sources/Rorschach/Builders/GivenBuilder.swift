@@ -7,9 +7,9 @@
 
 import Foundation
 
-@_functionBuilder public struct GivenBuilder<C> {
+@resultBuilder public struct GivenBuilder {
 
-    public static func buildBlock(_ steps: Step<C>...) -> [Step<C>] {
+    public static func buildBlock(_ steps: Step...) -> [Step] {
         steps
     }
 }
