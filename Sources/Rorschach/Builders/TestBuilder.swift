@@ -7,13 +7,13 @@
 
 import Foundation
 
-@resultBuilder public struct TestBuilder<C> {
+@resultBuilder public struct TestBuilder {
 
-    public static func buildBlock(_ given: Given<C>, _ when: When<C>, _ then: Then<C>) -> (Given<C>, When<C>, Then<C>) {
+    public static func buildBlock(_ given: Given, _ when: When, _ then: Then) -> (Given, When, Then) {
         return (given, when, then)
     }
 
-    public static func buildBlock(_ when: When<C>, _ then: Then<C>) -> (When<C>, Then<C>) {
+    public static func buildBlock(_ when: When, _ then: Then) -> (When, Then) {
         return (when, then)
     }
 }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-@resultBuilder public struct WhenBuilder<C> {
+@resultBuilder public struct WhenBuilder {
 
-    public static func buildBlock(_ steps: Step<C>...) -> [Step<C>] {
+    public static func buildBlock(_ steps: Step...) -> [Step] {
         steps
     }
 }

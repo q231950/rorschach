@@ -6,14 +6,28 @@
 //
 
 import Foundation
+import XCTest
 
-open class Step<C> {
+open class Step {
 
-    public init() {}
+    let title: String?
+    let content: () -> Void
 
-    open var title: String {
-        "\(type(of: self))"
+    private let uuid = UUID()
+
+    public init(_ title: String? = nil, content: @escaping () -> Void) {
+        self.content = content
+        self.title = title
     }
 
-    open func execute(in context: inout C) {}
+    public func execute() {
+        content()
+    }
+
+}
+
+extension Step: Equatable {
+    public static func == (lhs: Step, rhs: Step) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
 }

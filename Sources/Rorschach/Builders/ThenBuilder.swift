@@ -8,8 +8,8 @@
 import Foundation
 
 
-@resultBuilder public struct ThenBuilder<C> {
-    public static func buildBlock(_ assertion: Assertion<C>) -> Assertion<C> {
+@resultBuilder public struct ThenBuilder {
+    public static func buildBlock(_ assertion: Assertion) -> Assertion {
         assertion
     }
 }

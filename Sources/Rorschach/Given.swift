@@ -8,43 +8,44 @@
 import Foundation
 import XCTest
 
-public class Given<C> {
+public class Given {
 
-    let steps: [Step<C>]
+    /// Returns "Given I do this"_ when this _Given_ either has content named _"I do this"_ or the first of its steps is titled _"I do this"_.
+    var title: String {
+        if let stepTitle = contentOnlyTitle {
+            return "Given " + stepTitle
+        }
+        return "Given " + (steps.first?.title ?? "")
+    }
+    var contentOnlyTitle: String?
 
-    init(steps: [Step<C>]) {
+    /// The _Step_s to be executed as part of the _Given_.
+    let steps: [Step]
+
+    init(steps: [Step]) {
         self.steps = steps
     }
 
-    public init(_ content: @escaping (inout C) -> Void) {
-        steps = [GeneralStep(content)]
+    /// Shorthand for a _Given_ with a single step with some content
+    public init(_ title: String, content: @escaping () -> Void) {
+        contentOnlyTitle = title
+        steps = [Step(content: content)]
     }
 
-    public convenience init(@GivenBuilder<C> _ content: () -> [Step<C>]) {
+    /// Initializes a _Given_ with the given _Step_s
+    public convenience init(@GivenBuilder _ content: () -> [Step]) {
         self.init(steps: content())
     }
 
-    public convenience init(@GivenBuilder<C> _ content: () -> Step<C>) {
-        self.init(steps: [content()])
-    }
-
-    func execute(in context: inout C) {
+    func execute() {
         steps.forEach { step in
-            XCTContext.runActivity(named: step.title ) { _ in
-                step.execute(in: &context)
+            if step != steps.first, let title = step.title {
+                XCTContext.runActivity(named: "And \(title)" ) { _ in
+                    step.execute()
+                }
+            } else {
+                step.execute()
             }
         }
-    }
-}
-
-public class GeneralStep<C>: Step<C> {
-    let content: (_ inContext: inout C) -> Void
-
-    public init(_ content: @escaping (_ context: inout C) -> Void) {
-        self.content = content
-    }
-
-    override public func execute(in context: inout C) {
-        content(&context)
     }
 }
