@@ -19,12 +19,6 @@ open class Assertion {
     }
 
     public func assert() {
-        if let title = title {
-            XCTContext.runActivity(named: title ) { _ in
-                content()
-            }
-        } else {
-            content()
-        }
+        content()
     }
 }

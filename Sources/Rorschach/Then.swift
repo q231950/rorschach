@@ -11,17 +11,17 @@ import XCTest
 public struct Then {
 
     let assertion: Assertion
-    /// Returns _"Given"_ or _"Given I do this"_ when this _Given_ has a single step named _"I do this"_
+
     var title: String {
-        if let title = _title {
-            return "Then " + title
+        if let assertionTitle = contentOnlyTitle {
+            return "Then " + assertionTitle
         }
-        return "Then"
+        return "Then " + (assertion.title ?? "")
     }
-    var _title: String?
+    var contentOnlyTitle: String?
 
     public init(_ title: String, content: @escaping () -> Void) {
-        _title = title
+        contentOnlyTitle = title
         assertion = Assertion(content: content)
     }
 
