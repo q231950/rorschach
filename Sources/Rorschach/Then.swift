@@ -10,13 +10,13 @@ import XCTest
 
 public struct Then {
 
-    let assertion: Assertion
+    let assertion: Assertion?
 
     var title: String {
         if let assertionTitle = contentOnlyTitle {
             return "Then " + assertionTitle
         }
-        return "Then " + (assertion.title ?? "")
+        return "Then " + (assertion?.title ?? "")
     }
     var contentOnlyTitle: String?
 
@@ -25,11 +25,11 @@ public struct Then {
         assertion = Assertion(content: content)
     }
 
-    public init(@ThenBuilder _ content: () -> Assertion) {
+    public init(@ThenBuilder _ content: () -> Assertion?) {
         assertion = content()
     }
 
     func assert() {
-        assertion.assert()
+        assertion?.assert()
     }
 }

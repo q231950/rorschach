@@ -9,7 +9,7 @@ import Foundation
 
 
 @resultBuilder public struct ThenBuilder {
-    public static func buildBlock(_ assertion: Assertion) -> Assertion {
+    public static func buildBlock(_ assertion: Assertion?) -> Assertion? {
         assertion
     }
 }
