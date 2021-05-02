@@ -9,7 +9,7 @@ import Foundation
 
 @resultBuilder public struct WhenBuilder {
 
-    public static func buildBlock(_ steps: Step...) -> [Step] {
+    public static func buildBlock(_ steps: Step?...) -> [Step?] {
         steps
     }
 }
