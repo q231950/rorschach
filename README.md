@@ -35,6 +35,9 @@ The test run leads to this result in Xcode's Report Navigator. An easy to read o
 
 <img width=800 src="Resources/test-result.png" alt="Corresponding test result in Xcode's Report Navigator">
 
+<img width=800 src="Resources/test-result-failure.png" alt="Corresponding test result with failure in Xcode's Report Navigator">
+
 ---
 
 Contributions are much appreciated. Any kind of feedback about whether or not this is helpful for you or if you want to share ways to improve _Rorschach_ are highly welcome. Reach out on Twitter to [q231950](https://twitter.com/q231950) or [create a new issue](https://github.com/q231950/rorschach/issues/new).
+
