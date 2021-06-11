@@ -19,13 +19,13 @@ final class RorschachTests: XCTestCase {
 
         expect {
             Given("I have a universe without any stars") {
-                context.numberOfStars = 5
+                context.numberOfStars = 0
             }
             When("I add a couple of stars") {
-                context.numberOfStars = 1_000_000_000_023
+                context.numberOfStars += 23
             }
             Then("I can see the stars I have added ✨") {
-                XCTAssertEqual(context.numberOfStars, 1_000_000_000_023)
+                XCTAssertEqual(context.numberOfStars, 23)
             }
         }
     }
