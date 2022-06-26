@@ -21,20 +21,20 @@ public class Given {
     }
     var contentOnlyTitle: String?
 
-    /// The _Step_s to be executed as part of the _Given_.
+    /// The _Step_s to be executed as part of the `Given`.
     let steps: [Step?]
 
     init(steps: [Step?]) {
         self.steps = steps
     }
 
-    /// Shorthand for a _Given_ with a single step with some content
+    /// Shorthand for a `Given` with a single step with some content
     public init(_ title: String, content: @escaping () -> Void) {
         contentOnlyTitle = title
         steps = [Step(content: content)]
     }
 
-    /// Initializes a _Given_ with the given _Step_s
+    /// Initializes a `Given` block  with the given `Step`s
     public convenience init(@GivenBuilder _ content: () -> [Step?]) {
         self.init(steps: content())
     }
