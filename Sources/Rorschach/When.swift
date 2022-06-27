@@ -8,6 +8,7 @@
 import Foundation
 import XCTest
 
+/// The ``When`` section of a test. It contains one or more ``Step``s.
 public struct When {
 
     /// Returns "When I do this"_ when this ``When`` either has content named _"I do this"_ or the first of its steps is titled _"I do this"_.

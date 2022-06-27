@@ -13,23 +13,23 @@ Take a look at the following example:
 ```swift
 func test_simple_example() {
 
-    let context = UniverseContext()
+    let universe = UniverseContext()
 
     expect {
         Given("I have a universe without any stars") {
-            context.numberOfStars = 0
+            universe.numberOfStars = 0
         }
         When("I add a couple of stars") {
-            context.numberOfStars = 23
+            universe.numberOfStars = 23
         }
         Then("I can see the stars I have added ✨") {
-            XCTAssertEqual(context.numberOfStars, 23)
+            XCTAssertEqual(universe.numberOfStars, 23)
         }
     }
 }
 ```
 
-Please note that the contents of each [Step](Sources/Rorschach/Step.swift) like `context.numberOfStars = 23` for example, are arbitrary Swift code - you are free to add your abstractions on a Page Object Model or the like as you need them.
+Please note that the contents of each [Step](Sources/Rorschach/Step.swift) like `universe.numberOfStars = 23` for example, are arbitrary Swift code - you are free to add your abstractions on a Page Object Model or the like as you need them.
 
 The test run leads to this result in Xcode's Report Navigator. An easy to read output that can easily be understood in case of a failure.
 

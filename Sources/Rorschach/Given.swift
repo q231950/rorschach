@@ -8,7 +8,8 @@
 import Foundation
 import XCTest
 
-public class Given {
+/// The ``Given`` section of a test. It contains one or more ``Step``s.
+public struct Given {
 
     /// Returns "Given I do this"_ when this ``Given`` either has content named _"I do this"_ or the first of its steps is titled _"I do this"_.
     var title: String {
@@ -35,7 +36,7 @@ public class Given {
     }
 
     /// Initializes a ``Given`` section  with the given ``Step``s
-    public convenience init(@GivenBuilder _ content: () -> [Step?]) {
+    public init(@GivenBuilder _ content: () -> [Step?]) {
         self.init(steps: content())
     }
 

@@ -8,10 +8,11 @@
 import Foundation
 import XCTest
 
-open class Assertion {
+/// The ``Assertion`` of the ``Then`` section can contain arbitrary code that makes a test's validation.
+public struct Assertion {
 
     let title: String?
-    let content: () -> Void
+    private let content: () -> Void
 
     public init(_ title: String? = nil, content: @escaping () -> Void) {
         self.title = title

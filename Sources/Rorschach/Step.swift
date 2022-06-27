@@ -8,10 +8,12 @@
 import Foundation
 import XCTest
 
-public class Step {
+/// ``Step``s are part of the ``Given`` and the ``When`` sections of a test. Each of these sections can contain one or more ``Step``s.
+public struct Step {
 
     let title: String?
-    let content: () -> Void
+
+    private let content: () -> Void
 
     private let uuid = UUID()
 
