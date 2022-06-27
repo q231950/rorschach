@@ -2,7 +2,7 @@
 
 ## Next version
 
-## 1.2.0
+## 2.0.0
 
 **Colorful Tone**
 
