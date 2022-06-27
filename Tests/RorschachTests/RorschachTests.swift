@@ -13,7 +13,7 @@ final class RorschachTests: XCTestCase {
     ///     1. some instance context at the scope of the test case
     ///     2. some funtion context at the scope of a test function
     ///
-    /// `Given` certain preconditions `When` some event occurs `Then` some behaviour should be observed.
+    /// ``Given`` certain preconditions ``When`` some event occurs ``Then`` some behaviour should be observed.
     ///
     func test_simple_example() {
 
@@ -32,7 +32,7 @@ final class RorschachTests: XCTestCase {
         }
     }
 
-    /// An Example test case without a `Given` block.
+    /// An Example test case without a ``Given`` section.
     func test_simple_example_short() {
 
         let context = UniverseContext()
@@ -47,8 +47,7 @@ final class RorschachTests: XCTestCase {
         }
     }
 
-    /// An Example test case that highlights multiple `Step`s within `Given` and `When` blocks.
-    /// Also, an object model is used to show how to deal with more structured tests.
+    /// An Example test case that highlights multiple ``Step``s within ``Given`` and ``When`` sections.
     func test_complex_example() {
 
         /// Some object model that holds the overall count of stars across universes.

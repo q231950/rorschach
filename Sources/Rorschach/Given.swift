@@ -10,7 +10,7 @@ import XCTest
 
 public class Given {
 
-    /// Returns "Given I do this"_ when this _Given_ either has content named _"I do this"_ or the first of its steps is titled _"I do this"_.
+    /// Returns "Given I do this"_ when this ``Given`` either has content named _"I do this"_ or the first of its steps is titled _"I do this"_.
     var title: String {
         guard let firstStep = steps.first else { return "Given" }
 
@@ -19,22 +19,22 @@ public class Given {
         }
         return "Given " + (firstStep?.title ?? "")
     }
-    var contentOnlyTitle: String?
+    private var contentOnlyTitle: String?
 
-    /// The _Step_s to be executed as part of the `Given`.
-    let steps: [Step?]
+    /// The _Step_s to be executed as part of the ``Given``.
+    private let steps: [Step?]
 
     init(steps: [Step?]) {
         self.steps = steps
     }
 
-    /// Shorthand for a `Given` with a single step with some content
+    /// Shorthand for a ``Given`` with a single step with some content
     public init(_ title: String, content: @escaping () -> Void) {
         contentOnlyTitle = title
         steps = [Step(content: content)]
     }
 
-    /// Initializes a `Given` block  with the given `Step`s
+    /// Initializes a ``Given`` section  with the given ``Step``s
     public convenience init(@GivenBuilder _ content: () -> [Step?]) {
         self.init(steps: content())
     }

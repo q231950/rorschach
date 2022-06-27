@@ -8,7 +8,7 @@
 import Foundation
 import XCTest
 
-open class Step {
+public class Step {
 
     let title: String?
     let content: () -> Void
