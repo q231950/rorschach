@@ -10,6 +10,9 @@ This release refines the public API.
 
 - makes the `expect` function part of an extension on XCTest
 - adds documentation
+- refactors production and test code
+- compiles on Xcode 14 Beta 1 and Beta 2
+- compiles with `swift-tools-version:5.7`
 
 ## 1.1.0
 
