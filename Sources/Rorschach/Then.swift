@@ -8,6 +8,7 @@
 import Foundation
 import XCTest
 
+/// The ``Then`` section of a test. Its content is an ``Assertion``
 public struct Then {
 
     let assertion: Assertion?
