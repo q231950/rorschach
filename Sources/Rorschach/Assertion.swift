@@ -12,14 +12,24 @@ import XCTest
 public struct Assertion {
 
     let title: String?
-    private let content: () -> Void
+    private var content: (() -> Void)?
+    private var asyncContent: (() async -> Void)?
+
+    public init(_ title: String? = nil, content: @escaping () async -> Void) {
+        self.title = title
+        self.asyncContent = content
+    }
 
     public init(_ title: String? = nil, content: @escaping () -> Void) {
         self.title = title
         self.content = content
     }
 
+    public func assert() async {
+        await asyncContent?()
+    }
+
     public func assert() {
-        content()
+        content?()
     }
 }
