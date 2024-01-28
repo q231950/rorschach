@@ -32,7 +32,7 @@ public protocol Expecting {
     ///        }
     ///    }
     ///    ```
-    func expect(@ExpectationBuilder _ content: () -> (given: Given, when: When, then: Then))
+    func expect(@ExpectationBuilder _ content: @escaping () -> (given: Given, when: When, then: Then))
 
     /// A test's expectation containing only the ``When`` and the ``Then`` sections.
     ///
@@ -49,13 +49,13 @@ public protocol Expecting {
     ///    }
     ///    ```
 
-    func expect(@ExpectationBuilder _ content: () -> (when: When, then: Then))
+    func expect(@ExpectationBuilder _ content: @escaping () -> (when: When, then: Then))
 }
 
 /// This extension adds support for test expectations to _XCTestCase_.
 extension XCTestCase: Expecting {
 
-    public func expect(@ExpectationBuilder _ content: () -> (given: Given, when: When, then: Then)) {
+    public func expect(@ExpectationBuilder _ content: @escaping () -> (given: Given, when: When, then: Then)) {
 
         XCTContext.runActivity(named: content().given.title ) { _ in
             content().given.execute()
@@ -65,19 +65,23 @@ extension XCTestCase: Expecting {
             content().when.execute()
         }
 
-        XCTContext.runActivity(named: content().then.title ) { _ in
-            content().then.assert()
+        _ = XCTContext.runActivity(named: content().then.title ) { _ in
+            Task {
+                try await content().then.assert()
+            }
         }
     }
 
-    public func expect(@ExpectationBuilder _ content: () -> (when: When, then: Then)) {
+    public func expect(@ExpectationBuilder _ content: @escaping () -> (when: When, then: Then)) {
 
         XCTContext.runActivity(named: content().when.title ) { _ in
             content().when.execute()
         }
 
-        XCTContext.runActivity(named: content().then.title ) { _ in
-            content().then.assert()
+        _ = XCTContext.runActivity(named: content().then.title ) { _ in
+            Task {
+                try await content().then.assert()
+            }
         }
     }
 

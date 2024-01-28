@@ -13,11 +13,11 @@ public struct Assertion {
 
     let title: String?
     private var content: (() -> Void)?
-    private var asyncContent: (() async -> Void)?
+    private var asyncThrowingContent: (() async throws -> Void)?
 
-    public init(_ title: String? = nil, content: @escaping () async -> Void) {
+    public init(_ title: String? = nil, content: @escaping () async throws -> Void) {
         self.title = title
-        self.asyncContent = content
+        self.asyncThrowingContent = content
     }
 
     public init(_ title: String? = nil, content: @escaping () -> Void) {
@@ -25,8 +25,8 @@ public struct Assertion {
         self.content = content
     }
 
-    public func assert() async {
-        await asyncContent?()
+    public func assert() async throws {
+        try await asyncThrowingContent?()
     }
 
     public func assert() {
