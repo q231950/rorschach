@@ -21,6 +21,11 @@ public struct Then {
     }
     var contentOnlyTitle: String?
 
+    public init(_ title: String, content: @escaping () async throws -> Void) {
+        contentOnlyTitle = title
+        assertion = Assertion(content: content)
+    }
+
     public init(_ title: String, content: @escaping () -> Void) {
         contentOnlyTitle = title
         assertion = Assertion(content: content)
@@ -30,7 +35,7 @@ public struct Then {
         assertion = content()
     }
 
-    func assert() {
-        assertion?.assert()
+    func assert() async throws {
+        try await assertion?.assert()
     }
 }
